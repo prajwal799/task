@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tasks</title>
+    </head>
+    <body >
+         <form >
+            <label> Tasks</label>
+            <input id="task"  type="text" />
+            <br/>
+             <input type="submit" value="Submit" id="submitbtn" />
+            </form>
+            <hr/>
+            <table border="1">
+                <tr>
+                    <td>Name of Tasks</td>
+                    <td>Date</td>
+                    <td>Status</td>
+                </tr>
+            </table>
+            </body>
+        <script>
+              // id of submit btn and input box
+               var tasks = document.getElementById('task'); 
+               var submit = document.getElementById('submitbtn');  
+               
+               // when we click the submit btn
+               submit.addEventListener('click',function(e){
+                   e.preventDefault();
+
+                   // function tasks
+                   function taskcall(tasks){
+                       if(tasks.length == 0){
+                           alert("fill the tasks");
+                       }
+                       else {
+                       this.tasks = tasks;
+                       this.date = new Date().toString();
+                       this.Status = "False";
+
+                       // append the row
+                       var tbl = document.querySelector('table');
+                   var row = document.createElement('tr');
+                   
+                   var cell1 = document.createElement('td');
+                   cell1.textContent= this.tasks;
+                   
+                   var cell2 = document.createElement('td');
+                   cell2.textContent = this.date;
+
+                   var cell3 = document.createElement('td');
+                   cell3.textContent = this.Status;
+
+                   row.appendChild(cell1);
+                   row.appendChild(cell2);
+                   row.appendChild(cell3);
+
+                   tbl.appendChild(row);
+
+                   document.getElementById('task').value="";
+                   }
+                }
+                   
+                   var a = new taskcall(tasks.value);
+               })
+        </script>
+    </body>
+</html>
